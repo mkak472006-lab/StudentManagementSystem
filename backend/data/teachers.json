@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Dr. Ahmed",
+    "email": "ahmed@university.edu",
+    "department": "Computer Science"
+  },
+  {
+    "id": 2,
+    "name": "Dr. Sara",
+    "email": "sara@university.edu",
+    "department": "Software Engineering"
+  },
+  {
+    "id": 1788718823956,
+    "name": "ALi",
+    "email": "mkak472006@gmail.com",
+    "department": "Web development"
+  },
+  {
+    "id": 1788764963690,
+    "name": "Hassan",
+    "email": "abc@gmail.com",
+    "department": "web developer"
+  }
+]

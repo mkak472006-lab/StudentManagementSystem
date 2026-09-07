@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Ali Khan",
+    "email": "ali@example.com",
+    "program": "BS AI",
+    "semester": "2",
+    "status": "Active"
+  },
+  {
+    "id": 2,
+    "name": "Ahmed Raza",
+    "email": "ahmed@example.com",
+    "program": "BS CS",
+    "semester": "4",
+    "status": "Active"
+  },
+  {
+    "id": 3,
+    "name": "Sara Ali",
+    "email": "sara@example.com",
+    "program": "BS SE",
+    "semester": "3",
+    "status": "Active"
+  }
+]
