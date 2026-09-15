@@ -41,6 +41,10 @@ function Students() {
     semester: "",
   });
 
+  // NEW: View/Edit states
+  const [viewStudent, setViewStudent] = useState(null);
+  const [editStudent, setEditStudent] = useState(null);
+
   const handleChange = (e) => {
     setNewStudent({
       ...newStudent,
@@ -79,6 +83,26 @@ function Students() {
     });
 
     setShowForm(false);
+  };
+
+  // NEW: Edit
+  const handleEditChange = (e) => {
+    setEditStudent({
+      ...editStudent,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSaveEdit = (e) => {
+    e.preventDefault();
+
+    setStudents(
+      students.map((student) =>
+        student.id === editStudent.id ? editStudent : student
+      )
+    );
+
+    setEditStudent(null);
   };
 
   return (
@@ -383,11 +407,17 @@ function Students() {
                 </td>
 
                 <td>
-                  <button className="action-btn">
+                  <button
+                    className="action-btn"
+                    onClick={() => setViewStudent(student)}
+                  >
                     View
                   </button>
 
-                  <button className="action-btn">
+                  <button
+                    className="action-btn"
+                    onClick={() => setEditStudent({ ...student })}
+                  >
                     Edit
                   </button>
                 </td>
@@ -396,6 +426,119 @@ function Students() {
           </tbody>
         </table>
       </div>
+
+      {/* VIEW */}
+      {viewStudent && (
+        <div
+          style={{
+            position: "fixed",
+            inset: 0,
+            background: "rgba(0,0,0,0.5)",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            zIndex: 1000,
+          }}
+        >
+          <div
+            style={{
+              background: "white",
+              padding: "30px",
+              borderRadius: "16px",
+              width: "400px",
+              maxWidth: "90%",
+            }}
+          >
+            <h2>Student Details</h2>
+
+            <p><strong>Name:</strong> {viewStudent.name}</p>
+            <p><strong>Email:</strong> {viewStudent.email}</p>
+            <p><strong>Program:</strong> {viewStudent.program}</p>
+            <p><strong>Semester:</strong> {viewStudent.semester}</p>
+
+            <button
+              className="cancel-btn"
+              onClick={() => setViewStudent(null)}
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* EDIT */}
+      {editStudent && (
+        <div
+          style={{
+            position: "fixed",
+            inset: 0,
+            background: "rgba(0,0,0,0.5)",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            zIndex: 1000,
+          }}
+        >
+          <div
+            style={{
+              background: "white",
+              padding: "30px",
+              borderRadius: "16px",
+              width: "450px",
+              maxWidth: "90%",
+            }}
+          >
+            <h2>Edit Student</h2>
+
+            <form
+              className="student-form"
+              onSubmit={handleSaveEdit}
+            >
+              <input
+                type="text"
+                name="name"
+                value={editStudent.name}
+                onChange={handleEditChange}
+              />
+
+              <input
+                type="email"
+                name="email"
+                value={editStudent.email}
+                onChange={handleEditChange}
+              />
+
+              <input
+                type="text"
+                name="program"
+                value={editStudent.program}
+                onChange={handleEditChange}
+              />
+
+              <input
+                type="text"
+                name="semester"
+                value={editStudent.semester}
+                onChange={handleEditChange}
+              />
+
+              <div className="form-buttons">
+                <button type="submit" className="save-btn">
+                  Save Changes
+                </button>
+
+                <button
+                  type="button"
+                  className="cancel-btn"
+                  onClick={() => setEditStudent(null)}
+                >
+                  Cancel
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
