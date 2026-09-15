@@ -13,7 +13,7 @@ function Signup({ setPage }) {
     e.preventDefault();
 
     const response = await fetch(
-      "http://localhost:5000/api/signup",
+      "https://studentmanagementsystem-1-wsib.onrender.com/api/signup",
       {
         method: "POST",
         headers: {

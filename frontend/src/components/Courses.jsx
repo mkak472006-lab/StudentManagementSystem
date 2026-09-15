@@ -10,7 +10,7 @@ function Courses() {
   });
 
   const loadCourses = async () => {
-    const response = await fetch("http://localhost:5000/api/courses");
+    const response = await fetch("https://studentmanagementsystem-1-wsib.onrender.com/api/courses");
     const data = await response.json();
     setCourses(data);
   };
@@ -22,7 +22,7 @@ function Courses() {
   const addCourse = async (e) => {
     e.preventDefault();
 
-    await fetch("http://localhost:5000/api/courses", {
+    await fetch("https://studentmanagementsystem-1-wsib.onrender.com/api/courses", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -42,7 +42,7 @@ function Courses() {
   const deleteCourse = async (id) => {
     if (!window.confirm("Delete this course?")) return;
 
-    await fetch(`http://localhost:5000/api/courses/${id}`, {
+    await fetch(`https://studentmanagementsystem-1-wsib.onrender.com/api/courses/${id}`, {
       method: "DELETE"
     });
 

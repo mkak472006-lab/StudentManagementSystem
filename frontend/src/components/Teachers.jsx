@@ -10,7 +10,7 @@ function Teachers() {
   });
 
   const loadTeachers = async () => {
-    const response = await fetch("http://localhost:5000/api/teachers");
+    const response = await fetch("https://studentmanagementsystem-1-wsib.onrender.com/api/teachers");
     const data = await response.json();
     setTeachers(data);
   };
@@ -22,7 +22,7 @@ function Teachers() {
   const addTeacher = async (e) => {
     e.preventDefault();
 
-    await fetch("http://localhost:5000/api/teachers", {
+    await fetch("https://studentmanagementsystem-1-wsib.onrender.com/api/teachers", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -42,7 +42,7 @@ function Teachers() {
   const deleteTeacher = async (id) => {
     if (!window.confirm("Delete this teacher?")) return;
 
-    await fetch(`http://localhost:5000/api/teachers/${id}`, {
+    await fetch(`https://studentmanagementsystem-1-wsib.onrender.com/api/teachers/${id}`, {
       method: "DELETE"
     });
 

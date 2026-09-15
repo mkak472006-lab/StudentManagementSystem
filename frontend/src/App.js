@@ -12,9 +12,17 @@ import "./App.css";
 
 function App() {
 
-  const [page, setPage] = useState("login");
+  const [page, setPage] = useState(
+    window.location.pathname === "/demo"
+      ? "dashboard"
+      : "login"
+  );
 
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(
+    window.location.pathname === "/demo"
+      ? { name: "Demo User" }
+      : null
+  );
 
   const handleLogin = (loggedInUser) => {
     setUser(loggedInUser);
@@ -24,6 +32,7 @@ function App() {
   const handleLogout = () => {
     setUser(null);
     setPage("login");
+    window.history.pushState({}, "", "/");
   };
 
   if (!user) {
@@ -48,9 +57,9 @@ function App() {
         setPage={setPage}
         onLogout={handleLogout}
         onHome={() => {
-  setUser(null);
-  setPage("landing");
-}}
+          setUser(null);
+          setPage("landing");
+        }}
       />
 
       <main>
